@@ -1,0 +1,268 @@
+/* app/static/css/style.css */
+:root {
+    --dark-blue: #213448;
+    --medium-blue: #547792;
+    --light-blue-grey: #94B4C1;
+    --light-cream: #ECEFCA;
+    --text-on-dark: #ECEFCA; /* Light cream text on dark blue background */
+    --text-on-light: #213448; /* Dark blue text on light cream background */
+    --font-primary: 'Arial', sans-serif; /* Replace with a nicer font if you have one */
+}
+
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    background-color: #f8f9fa; /* A very light off-white for the page background */
+    color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--medium-blue);
+}
+
+a:hover {
+    color: var(--dark-blue);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.main-header {
+    background-color: white;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-blue-grey);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-top-left .menu-btn,
+.header-top-left .events-btn,
+.header-top-left .news-btn {
+    background-color: var(--light-cream);
+    color: var(--dark-blue);
+    border: 1px solid var(--medium-blue);
+    padding: 8px 15px;
+    margin-right: 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.header-top-left .menu-btn:hover,
+.header-top-left .events-btn:hover,
+.header-top-left .news-btn:hover {
+    background-color: var(--medium-blue);
+    color: var(--light-cream);
+}
+
+
+.logo img {
+    height: 40px; /* Adjust as needed */
+}
+
+.header-top-right a {
+    margin-left: 20px;
+    color: var(--dark-blue);
+    font-weight: 500;
+}
+.header-top-right a:hover {
+    color: var(--medium-blue);
+}
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+.cart-icon img {
+    height: 24px; /* Adjust */
+}
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--medium-blue);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+
+.header-search {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center search bar */
+    margin-bottom: 15px; /* Space below search */
+}
+
+.search-bar {
+    width: 50%; /* Adjust width */
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 1px solid var(--light-blue-grey);
+    border-radius: 25px;
+    font-size: 1em;
+    background-color: #f0f2f5; /* Light grey background for search */
+}
+.search-bar::placeholder {
+    color: var(--medium-blue);
+}
+.search-icon { /* If you have an icon inside or next to search */
+    margin-left: -35px; /* Adjust to position icon inside input */
+    color: var(--medium-blue);
+    cursor: pointer;
+}
+
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center nav items */
+    align-items: center;
+}
+
+.main-nav ul li {
+    margin: 0 20px; /* Spacing between nav items */
+}
+
+.main-nav ul li a {
+    color: var(--dark-blue);
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a.active,
+.main-nav ul li a:hover {
+    color: var(--medium-blue);
+}
+
+.main-nav ul li a.active::after,
+.main-nav ul li a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--medium-blue);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #e9ecef; /* Light grey, similar to reference */
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 30px; /* Space below hero */
+}
+
+.hero-banner {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    /* You might want to set a fixed height and use object-fit if images vary */
+}
+
+.shop-now-btn {
+    display: inline-block;
+    background-color: var(--light-cream); /* Your yellow/cream for buttons */
+    color: var(--dark-blue);
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: 20px; /* Space from image if banner is separate */
+    border: 2px solid var(--dark-blue);
+    transition: all 0.3s ease;
+}
+
+.shop-now-btn:hover {
+    background-color: var(--dark-blue);
+    color: var(--light-cream);
+}
+
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--dark-blue);
+    color: var(--light-cream);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: auto;
+}
+.footer-content {
+    /* Add links, copyright etc. */
+}
+.footer-content p {
+    margin: 5px 0;
+}
+.footer-content a {
+    color: var(--light-cream);
+    margin: 0 10px;
+}
+.footer-content a:hover {
+    color: var(--light-blue-grey);
+}
+
+/* Utility for active nav link, can be set by Flask/Jinja */
+.nav-active {
+    color: var(--medium-blue) !important;
+    font-weight: bold;
+    border-bottom: 2px solid var(--medium-blue);
+}
+
+/* Basic styling for content sections if needed */
+.content-section {
+    margin-bottom: 40px;
+}
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-blue);
+}
+/* ... your existing CSS ... */
+
+.alert-bg-danger { background-color: #f8d7da !important; }
+.alert-bg-success { background-color: #d4edda !important; }
+.alert-bg-info { background-color: var(--light-cream) !important; } /* Default/info */
+.alert-bg-warning { background-color: #fff3cd !important; } /* Example for warning */
+
+/* General alert styling */
+.alert {
+    color: var(--dark-blue);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid transparent; /* For consistent box model */
+}
+.alert-danger { border-color: #f5c6cb; }
+.alert-success { border-color: #c3e6cb; }
+.alert-info { border-color: var(--medium-blue); }
+.alert-warning { border-color: #ffeeba; }

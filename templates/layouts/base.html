@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bookstore{% endblock %} - Online Bookstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Link to Font Awesome or other icon libraries if you use them -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-top-left">
+                    <button class="menu-btn">☰ Menu</button> <!-- Add JS for functionality -->
+                    <button class="events-btn">Events</button>
+                    <button class="news-btn">News</button>
+                </div>
+                <div class="logo">
+                    <a href="{{ url_for('customer.index') }}">
+                        <!-- Replace with your actual logo image -->
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Bookstore Logo">
+                    </a>
+                </div>
+                <div class="header-top-right">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.logout') }}">Logout</a>
+                        {% if current_user.role == 'manager' %}
+                             <a href="{{ url_for('manager.dashboard') }}">Manager Dashboard</a>
+                        {% else %}
+                            <a href="#">My Account</a> <!-- Link to customer profile -->
+                        {% endif %}
+                    {% else %}
+                        <a href="{{ url_for('auth.signup') }}">Sign up</a>
+                        <a href="{{ url_for('auth.login') }}">Login</a>
+                    {% endif %}
+                    <a href="#" class="cart-icon"> <!-- Link to cart page -->
+                        🛒 <!-- Replace with an icon image or Font Awesome -->
+                        <span class="cart-count">0</span> <!-- Update with actual cart count -->
+                    </a>
+                </div>
+            </div>
+
+            <div class="header-search">
+                <input type="text" class="search-bar" placeholder="Search by Title, Author, or Genre">
+                <!-- <span class="search-icon">🔍</span> -->
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('customer.index') }}" class="{% if request.endpoint == 'customer.index' %}active{% endif %}">Home</a></li>
+                    <li><a href="#">New</a></li>
+                    <li><a href="#">ديوان للنشر</a></li> <!-- Arabic -->
+                    <li><a href="#">English Adults</a></li>
+                    <li><a href="#">كتب عربية</a></li> <!-- Arabic -->
+                    <li><a href="#">Kids</a></li>
+                    <li><a href="#">Lifestyle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        {% block content %}
+        <!-- Page specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>© {% now 'local', '%Y' %} Your Bookstore Name. All Rights Reserved.</p>
+            <p>
+                <a href="#">About Us</a> |
+                <a href="#">Contact Us</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts_extra %}{% endblock %}
+</body>
+</html>
